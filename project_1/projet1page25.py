@@ -9,10 +9,18 @@ class basics_colors:
     FAIL = '\033[91m' #RED
     RESET = '\033[0m' #RESET COLOR
 
+def error_message(args):
+    print(basics_colors.FAIL, errors_dict[args] ,basics_colors.RESET)
+    
 #exercice 1 
 def decimale_binaire(n):
     req_value_1 = input("donnez un chiffre en base 10 \n >>>")
     n = int(req_value_1)
+    if n < 0:
+        args = 2
+        error_message(args)
+        time.sleep(1)
+        requestType()
 
     req_binary(n)
     #end decimale_binaire
@@ -37,6 +45,11 @@ def decimale_hexadecimale(n):
     n = 0
     req_value_1 = input("donnez un chiffre en base 10 \n >>>")
     n = int(req_value_1)
+    if n < 0:
+        args = 2
+        error_message(args)
+        time.sleep(1)
+        requestType()
     reqBase = 16
 
     req_hexa(n, reqBase)
@@ -70,28 +83,25 @@ def base_request(n):
     vInit = int(req_value_1)
     n = int(req_value_1)
 
+    if n < 0:
+        args = 2
+        error_message(args)
+        time.sleep(1)
+        requestType()
     if n == 0:
         print(basics_colors.OK, "0 vaut en 0 en toutes les bases ", basics_colors.RESET)
-        time.sleep(1)
-        requestType()
-    if n < 0:
-        print(f"{basics_colors.WARNING}ERREUR : le nombre est négatif, réesayez{basics_colors.RESET}")
-        time.sleep(1)
-        requestType()
-    
-    else:
-        print(f"{basics_colors.FAIL}ERREUR : une erreur est survenue, merci de réessayer{basics_colors.RESET}")
         time.sleep(1)
         requestType()
 
     req_value_2 = input("donnez la base en laquelle vous voulez convertir  \n >>>")
     reqBase = int(req_value_2)
 
-    if reqBase <= 0:
-        print(f"{basics_colors.WARNING}ERREUR : le nombre est négatif ou égal à 0, réesayez{basics_colors.RESET}")
+    if reqBase < 0:
+        args = 3
+        error_message(args)
         time.sleep(1)
         requestType()
-    
+
     binary_list = []
 
     if reqBase == 2: #renvoie vers l'exercice de base 2
@@ -112,17 +122,16 @@ def base_request(n):
         print(basics_colors.OK, vInit, " en base 10 équivaut à ", resList, " ( ", resListTotal, " ) en base ", reqBase, basics_colors.RESET)
         time.sleep(3)
         requestType()
-    
-    else:
-        print(f"{basics_colors.FAIL}ERREUR : une erreur est survenue, merci de réessayer{basics_colors.RESET}")
-        time.sleep(1)
-        requestType()
-
 
 # demande ce que l'user veut faire 
 def requestType():
     request = input("que voulez vous faire ? \n '1' -> conersion décimale vers binaire \n '2' -> conversion décimale vers hexadécimale \n '3' -> conversion décimale vers base demandée \n >>>")
     n = int(request)
+    if n < 0 or n > 3:
+        args = 1
+        error_message(args)
+        time.sleep(1)
+        requestType()
     if n == 1: 
         decimale_binaire(n) # -> Exercice 1 -> partie du calcul
         return()
@@ -130,16 +139,8 @@ def requestType():
         decimale_hexadecimale(n) # -> Exercice 2 -> partie du calcul
         return()
     if n == 3:
-        base_request(n) # -> Exercice 1 -> partie de demande puis de calcul
+        base_request(n) # -> Exercice 3 -> partie de demande puis de calcul
         return()
-    else: 
-        print(f"{basics_colors.WARNING}ERREUR : l'entrée est incorrecte, réesayez{basics_colors.RESET}")
-        time.sleep(2)
-        requestType()  
-        return() 
 
 #debut du code
 requestType()
-
-
-# fonction pour les nombres négatifs (donner une soltion)

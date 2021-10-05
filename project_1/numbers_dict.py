@@ -1,4 +1,3 @@
-
 numbers_dict={}
 numbers_dict[10] = 'A'
 numbers_dict[11] = 'B'
@@ -26,6 +25,13 @@ numbers_dict[32] = 'W'
 numbers_dict[33] = 'X'
 numbers_dict[34] = 'Y'
 numbers_dict[35] = 'Z'
+
+errors_dict={}
+errors_dict[1] = 'ERROR_TYPE_1: Invalid Request'
+errors_dict[2] = 'ERROR_TYPE_2: Invalid Number Request (Negative Number)'
+errors_dict[3] = 'ERROR_TYPE_3: Invalid Base Request (Negative Base)'
+
+
 
 
 
