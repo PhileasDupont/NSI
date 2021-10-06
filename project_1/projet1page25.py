@@ -1,5 +1,5 @@
 # Projet 1 page 25
-# Version 3.0.1
+# Version 3.0.2
 
 import time
 from numbers_dict import *
@@ -18,18 +18,17 @@ def error_message(args):
 def decimale_binaire(n):
     req_value_1 = input("donnez un chiffre en base 10 \n >>>")
     n = int(req_value_1)
-    if n == 0 or n == 1:
+    if n == 0 or n == 1: # valeurs par defaut
         print(basics_colors.OK, n, " vaut ", n," en toutes les bases ", basics_colors.RESET)
         time.sleep(1)
         requestType()
-    if n < 0:
+    if n < 0: # erreur
         args = 2
         error_message(args)
         time.sleep(1)
         requestType()
 
     req_binary(n)
-    #end decimale_binaire
 
 def req_binary(n):
     vInit = n
@@ -46,25 +45,26 @@ def req_binary(n):
         time.sleep(3)
         requestType()
 
+    #end decimale_binaire
+
 # exercice 2
 def decimale_hexadecimale(n):
     n = 0
     req_value_1 = input("donnez un chiffre en base 10 \n >>>")
     n = int(req_value_1)
 
-    if n == 0 or n == 1:
+    if n == 0 or n == 1: # valeurs par défaut
         print(basics_colors.OK, n, " vaut ", n," en toutes les bases ", basics_colors.RESET)
         time.sleep(1)
         requestType()
-    if n < 0:
+
+    if n < 0: # erreur
         args = 2
         error_message(args)
         time.sleep(1)
         requestType()
     reqBase = 16
-
     req_hexa(n, reqBase)
-    # end decimale_hexadecimale
 
 def req_hexa(n, reqBase):
     
@@ -75,17 +75,19 @@ def req_hexa(n, reqBase):
         varList = n % reqBase
         n = n // reqBase
 
-        if varList > 9:
+        if varList > 9: # si c'est un chiffre (0 -> 9 )
             binary_list.insert(0, numbers_dict[varList])
-        if varList <= 9:
+        if varList <= 9: # si supérieur à 9 renvoie les lettres
             binary_list.insert(0, varList)
             
         if n == 0:
-            resList = ' ,'.join(map(str,binary_list))
-            resListTotal = ''.join(map(str,binary_list)) 
+            resList = ' ,'.join(map(str,binary_list)) # faire une liste visible
+            resListTotal = ''.join(map(str,binary_list)) # faire une liste visible
             print(basics_colors.OK, vInit, " en base 10 équivaut à ", resList, " ( ", resListTotal, " ) en base ", reqBase, basics_colors.RESET)
             time.sleep(3)
             requestType()
+
+    # end decimale_hexadecimale
     
 # exercice 3
 def base_request(n):
@@ -94,12 +96,12 @@ def base_request(n):
     vInit = int(req_value_1)
     n = int(req_value_1)
 
-    if n < 0:
+    if n < 0: # erreur
         args = 2
         error_message(args)
         time.sleep(1)
         requestType()
-    if n == 0 or n == 1:
+    if n == 0 or n == 1: # valeurs par défaut
         print(basics_colors.OK, n, " vaut ", n," en toutes les bases ", basics_colors.RESET)
         time.sleep(1)
         requestType()
@@ -107,7 +109,7 @@ def base_request(n):
     req_value_2 = input("donnez la base en laquelle vous voulez convertir  \n >>>")
     reqBase = int(req_value_2)
 
-    if reqBase <= 1:
+    if reqBase <= 1: # erreur
         args = 3
         error_message(args)
         time.sleep(1)
