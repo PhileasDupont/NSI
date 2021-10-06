@@ -1,5 +1,7 @@
-import time
+# Projet 1 page 25
+# Version 3.0.1
 
+import time
 from numbers_dict import *
 
 #classe des couleurs
@@ -16,6 +18,10 @@ def error_message(args):
 def decimale_binaire(n):
     req_value_1 = input("donnez un chiffre en base 10 \n >>>")
     n = int(req_value_1)
+    if n == 0 or n == 1:
+        print(basics_colors.OK, n, " vaut ", n," en toutes les bases ", basics_colors.RESET)
+        time.sleep(1)
+        requestType()
     if n < 0:
         args = 2
         error_message(args)
@@ -45,6 +51,11 @@ def decimale_hexadecimale(n):
     n = 0
     req_value_1 = input("donnez un chiffre en base 10 \n >>>")
     n = int(req_value_1)
+
+    if n == 0 or n == 1:
+        print(basics_colors.OK, n, " vaut ", n," en toutes les bases ", basics_colors.RESET)
+        time.sleep(1)
+        requestType()
     if n < 0:
         args = 2
         error_message(args)
@@ -88,15 +99,15 @@ def base_request(n):
         error_message(args)
         time.sleep(1)
         requestType()
-    if n == 0:
-        print(basics_colors.OK, "0 vaut en 0 en toutes les bases ", basics_colors.RESET)
+    if n == 0 or n == 1:
+        print(basics_colors.OK, n, " vaut ", n," en toutes les bases ", basics_colors.RESET)
         time.sleep(1)
         requestType()
 
     req_value_2 = input("donnez la base en laquelle vous voulez convertir  \n >>>")
     reqBase = int(req_value_2)
 
-    if reqBase < 0:
+    if reqBase <= 1:
         args = 3
         error_message(args)
         time.sleep(1)
