@@ -1,3 +1,5 @@
+# dictionnaire ( nombres -> Lettres et erreurs ) 
+
 numbers_dict={}
 numbers_dict[10] = 'A'
 numbers_dict[11] = 'B'
