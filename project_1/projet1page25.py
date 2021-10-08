@@ -1,6 +1,5 @@
 # Projet 1 page 25
-# Version 3.1.2
-
+# Version 3.1.3
 
 import time
 from numbers_dict import *
@@ -46,7 +45,6 @@ def req_binary(n):
         print(basics_colors.OK, vInit, " en base 10 équivaut à ", resList, " ( ", resListTotal, " ) en base 2", basics_colors.RESET)
         time.sleep(1.5)
         requestType()
-
     #end decimale_binaire
 
 # exercice 2
@@ -121,7 +119,7 @@ def base_request(n):
             if reqBase <= 1: # erreur
                 args = 3
                 error_message(args)
-            if reqBase > 35: # erreur
+            if reqBase > 36: # erreur
                 args = 5
                 error_message(args)
 
