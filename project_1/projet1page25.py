@@ -1,5 +1,6 @@
 # Projet 1 page 25
-# Version 3.1.1
+# Version 3.1.2
+
 
 import time
 from numbers_dict import *
@@ -7,7 +8,6 @@ from numbers_dict import *
 #classe des couleurs
 class basics_colors:
     OK = '\033[92m' #GREEN
-    WARNING = '\033[93m' #YELLOW
     FAIL = '\033[91m' #RED
     RESET = '\033[0m' #RESET COLOR
 
@@ -44,7 +44,7 @@ def req_binary(n):
         resList = ' ,'.join(map(str,binary_list))
         resListTotal = ''.join(map(str,binary_list)) 
         print(basics_colors.OK, vInit, " en base 10 équivaut à ", resList, " ( ", resListTotal, " ) en base 2", basics_colors.RESET)
-        time.sleep(3)
+        time.sleep(1.5)
         requestType()
 
     #end decimale_binaire
@@ -121,6 +121,9 @@ def base_request(n):
             if reqBase <= 1: # erreur
                 args = 3
                 error_message(args)
+            if reqBase > 35: # erreur
+                args = 5
+                error_message(args)
 
             binary_list = []
 
@@ -140,8 +143,9 @@ def base_request(n):
                 resList = ' ,'.join(map(str,binary_list))
                 resListTotal = ''.join(map(str,binary_list)) 
                 print(basics_colors.OK, vInit, " en base 10 équivaut à ", resList, " ( ", resListTotal, " ) en base ", reqBase, basics_colors.RESET)
-                time.sleep(3)
+                time.sleep(1.5)
                 requestType()
+
         else:
             args = 4
             error_message(args)
