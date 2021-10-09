@@ -1,22 +1,23 @@
 # Projet 1 page 25
-# Version 3.1.3
+# Version 3.2.0
+# Version en cours de documentation
 
 import time
 from numbers_dict import *
 
 #classe des couleurs
 class basics_colors:
-    OK = '\033[92m' #GREEN
-    FAIL = '\033[91m' #RED
-    RESET = '\033[0m' #RESET COLOR
+    OK = '\033[92m' #VERT -> réponse 
+    FAIL = '\033[91m' #ROUGE -> code d'erreur
+    RESET = '\033[0m' #GRIS -> remet les couleurs à 0
 
-def error_message(args):
+def error_message(args): # envoyé avec args, envoie un message d'erreur
     print(basics_colors.FAIL, errors_dict[args] ,basics_colors.RESET)
     time.sleep(1)
     requestType()
     
 #exercice 1 
-def decimale_binaire(n):
+def decimale_binaire(n): # envoyé grace à requestType(), renvoie la fonction de demande de calcul pour la base 2
     req_value_1 = input("donnez un chiffre en base 10 \n >>>")
 
     if (req_value_1.isdigit()):
@@ -27,11 +28,11 @@ def decimale_binaire(n):
             args = 2
             error_message(args)
         req_binary(n)
-    else:
+    else: # erreur
         args = 4
         error_message(args)
 
-def req_binary(n):
+def req_binary(n): # envoyé par requestType(), prend en fonction le nombre n demande, renvoie la fonction calculatoire du calcul binaire
     vInit = n
     binary_list = []
     while n != 0:
@@ -48,7 +49,7 @@ def req_binary(n):
     #end decimale_binaire
 
 # exercice 2
-def decimale_hexadecimale(n):
+def decimale_hexadecimale(n): # envoyé grace à requestType() ou req_binary(), renvoie la fonction de demande de calcul pour la base 16
     n = 0
     req_value_1 = input("donnez un chiffre en base 10 \n >>>")
 
@@ -64,14 +65,13 @@ def decimale_hexadecimale(n):
             args = 2
             error_message(args)
         reqBase = 16
-        req_hexa(n, reqBase)
+        req_hexa(n, reqBase) # renvoie à la partie calculatoire vers la base 16 avec n et la base demandée(obligatoirement 16)
 
-    else:
+    else: # erreur
         args = 4
         error_message(args)
     
-
-def req_hexa(n, reqBase):
+def req_hexa(n, reqBase): # envoyé par decimale_hexadecimal(), prend en compte n et la base 16, calcule le résultat
     
     varListStr = 0
     vInit = n
@@ -91,7 +91,6 @@ def req_hexa(n, reqBase):
             print(basics_colors.OK, vInit, " en base 10 équivaut à ", resList, " ( ", resListTotal, " ) en base ", reqBase, basics_colors.RESET)
             time.sleep(3)
             requestType()
-
     # end decimale_hexadecimale
     
 # exercice 3
@@ -143,7 +142,6 @@ def base_request(n):
                 print(basics_colors.OK, vInit, " en base 10 équivaut à ", resList, " ( ", resListTotal, " ) en base ", reqBase, basics_colors.RESET)
                 time.sleep(1.5)
                 requestType()
-
         else:
             args = 4
             error_message(args)
@@ -157,7 +155,7 @@ def requestType():
     
     if ( request.isdigit()):
         n = int(request)
-        if n < 0 or n > 3:
+        if n > 3 or n <= 0:
             args = 1
             error_message(args)
         if n == 1: 
