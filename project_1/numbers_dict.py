@@ -1,37 +1,12 @@
-# dictionnaire ( nombres -> Lettres et erreurs ) 
-# v 2.0.1
+# dictionnaire ( nombres -> Lettres +  erreurs ) 
+# v 3.0
 
-numbers_dict={}
-numbers_dict[10] = 'A'
-numbers_dict[11] = 'B'
-numbers_dict[12] = 'C'
-numbers_dict[13] = 'D'
-numbers_dict[14] = 'E'
-numbers_dict[15] = 'F'
-numbers_dict[16] = 'G'
-numbers_dict[17] = 'H'
-numbers_dict[18] = 'I'
-numbers_dict[19] = 'J'
-numbers_dict[20] = 'K'
-numbers_dict[21] = 'L'
-numbers_dict[22] = 'M'
-numbers_dict[23] = 'N'
-numbers_dict[24] = 'O'
-numbers_dict[25] = 'P'
-numbers_dict[26] = 'Q'
-numbers_dict[27] = 'R'
-numbers_dict[28] = 'S'
-numbers_dict[29] = 'T'
-numbers_dict[30] = 'U'
-numbers_dict[31] = 'V'
-numbers_dict[32] = 'W'
-numbers_dict[33] = 'X'
-numbers_dict[34] = 'Y'
-numbers_dict[35] = 'Z'
+import string
+alpha = string.digits + string.ascii_uppercase + string.ascii_lowercase
 
 errors_dict={}
 errors_dict[1] = 'ERROR_TYPE_1: Invalid Request'
 errors_dict[2] = 'ERROR_TYPE_2: Invalid Number Request (Negative Number)'
 errors_dict[3] = "ERROR_TYPE_3: Invalid Base Request (Negative, Null, or '1' Base)"
 errors_dict[4] = "ERROR_TYPE_4: Invalid  Request (Not A Number, Negative or decimal)"
-errors_dict[5] = "ERROR_TYPE_5: Too Important Base ( More than 35 is UNAVAILBLE ) "
+errors_dict[5] = "ERROR_TYPE_5: Too Important Base ( More than 62 is UNAVAILBLE ) "
