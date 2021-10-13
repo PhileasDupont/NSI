@@ -10,8 +10,8 @@ Ce programme Python consiste à effectuer la conversion d'un nombre en base déc
  - Les unités sont notées ainsi: 
     -> 0 à 9 == chiffres de 0 à 9
     -> 'A' à 'Z' == chiffres de 10 à 36
-    -> 'a' à 'z' == chiffres de 37 à 63
- - Pour des raisons de facilité de lecture, la base maximale pouvant être demandée est de 63.
+    -> 'a' à 'z' == chiffres de 37 à 62
+ - Pour des raisons de facilité de lecture, la base maximale pouvant être demandée est de 62.
  - Afin de retourner directement à la demande d'exercice, à n'importe quel moment tapez 'q'.
  - En cas de besoin d'aide, tapez 'help'. Si cette page ne repond pas à vos attentes, posez nous une question sur ce GitHub.
  
