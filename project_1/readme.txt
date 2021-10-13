@@ -15,6 +15,6 @@ Ce programme Python consiste à effectuer la conversion d'un nombre en base déc
  - Afin de retourner directement à la demande d'exercice, à n'importe quel moment tapez 'q'.
  - En cas de besoin d'aide, tapez 'help'. Si cette page ne repond pas à vos attentes, posez nous une question sur ce GitHub.
  
- En vous souhaitant, une agérable navigation.
+ En vous souhaitant une agérable navigation.
 
 /// COPYRIGHT ///
