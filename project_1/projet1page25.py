@@ -1,5 +1,5 @@
 # Projet 1 page 25
-# Version 3.2.0
+# Version 3.2.1
 # Version en cours de documentation
 
 import time
@@ -127,21 +127,10 @@ def base_request(n):
             if reqBase == 2: #renvoie vers l'exercice de base 2
                 req_binary(n)
                 requestType()
-            if reqBase > 9:
+            else:
                 req_hexa(n, reqBase) #renvoie vers l'exercice de base 16
                 requestType()
 
-            while n != 0:
-                varList = n % reqBase
-                binary_list.insert(0, varList)
-                n = n // reqBase
-
-            if n == 0:
-                resList = ' ,'.join(map(str,binary_list))
-                resListTotal = ''.join(map(str,binary_list)) 
-                print(basics_colors.OK, vInit, " en base 10 équivaut à ", resList, " ( ", resListTotal, " ) en base ", reqBase, basics_colors.RESET)
-                time.sleep(1.5)
-                requestType()
         else:
             args = 4
             error_message(args)
