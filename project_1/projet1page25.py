@@ -1,5 +1,5 @@
 # Projet 1 page 25
-# Version 4.0.1
+# Version 4.0.2
 # Version en cours de documentation
 
 import time
@@ -18,15 +18,20 @@ def error_message(args): # envoyé avec args, envoie un message d'erreur
     requestType()
 
 def verif(request):
-    if request == 'q':
+    if request == 'a' or request == 'again':
         print(basics_colors.OK, ' retour au début ...', basics_colors.RESET)
         time.sleep(0.5)
         requestType()
     if request == 'help' or request == 'h':
         print(basics_colors.OK,"redirection sur le GitHub ...", basics_colors.RESET)
-        webbrowser.open('https://github.com/PhileasDupont/NSI/blob/main/project_1/readme.txt')
+        webbrowser.open('https://github.com/PhileasDupont/NSI/blob/main/project_1/')
         time.sleep(2)
         requestType()
+    if request == 'q' or request == 'quit':
+        print(basics_colors.FAIL, "Merci d'avoir participé !", basics_colors.RESET)
+        print(basics_colors.OK, "Created by ©PhileasDupont", basics_colors.RESET)
+        time.sleep(1)
+        exit()
 
 #exercice 1 
 def decimale_binaire(n): # envoyé grace à requestType(), renvoie la fonction de demande de calcul pour la base 2
@@ -138,6 +143,7 @@ def base_request(n):
             else:
                 req_hexa(n, reqBase) #renvoie vers l'exercice de base 16
                 requestType()
+
         else:
             args = 4
             error_message(args)
@@ -149,7 +155,7 @@ def base_request(n):
 def requestType():
     print(basics_colors.OK, "debut du programme ...", basics_colors.RESET)
     time.sleep(1)
-    print("que voulez vous faire ? \n '1' -> conersion décimale vers binaire \n '2' -> conversion décimale vers hexadécimale \n '3' -> conversion décimale vers base demandée \n A n'importe quel moment tapez ", basics_colors.FAIL, ' q ', basics_colors.RESET, " pour ", basics_colors.FAIL, "RECOMMENCER", basics_colors.RESET, " ou tapez ", basics_colors.FAIL, " help ", basics_colors.RESET, " pour être ", basics_colors.FAIL, " redirigé vers la page d'aide", basics_colors.RESET)
+    print("que voulez vous faire ? \n '1' -> conersion décimale vers binaire \n '2' -> conversion décimale vers hexadécimale \n '3' -> conversion décimale vers base demandée \n A n'importe quel moment tapez", basics_colors.FAIL, ' a ', basics_colors.RESET, "pour", basics_colors.FAIL, " RECOMMENCER ", basics_colors.RESET, ", tapez", basics_colors.FAIL, " h ", basics_colors.RESET, "pour être", basics_colors.FAIL, " redirigé vers la page d'aide ", basics_colors.RESET, "ou tapez", basics_colors.FAIL, " q ", basics_colors.RESET, "pour", basics_colors.FAIL, " QUITTER", basics_colors.RESET)
     request = input(">>>")
     verif(request)
     if ( request.isdigit()):
