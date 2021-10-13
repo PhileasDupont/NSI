@@ -138,7 +138,6 @@ def base_request(n):
             else:
                 req_hexa(n, reqBase) #renvoie vers l'exercice de base 16
                 requestType()
-
         else:
             args = 4
             error_message(args)
