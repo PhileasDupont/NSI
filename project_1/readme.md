@@ -3,7 +3,7 @@
 Ce programme Python consiste à effectuer la conversion d'un nombre en base décimamle vers:
 1 ) une base binaire
 2 ) une base hexadécimale
-3 ) une base demandée ( entre 1 et 62 ) 
+3 ) une base demandée ( entre 1 et 62 )  
 
  - Afin de choisir l'exercice demandé, il suffit d'écrire lorsque demandé: 1; 2 ou 3; selon l'exercice voulu.
  - Sachez qu'un nombre décimal, ou négatif ainsi qu'une base décimale, négtive, nulle ou égale à 1, ne peut être accépté et renverra un message d'erreur. 
