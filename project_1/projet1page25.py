@@ -1,5 +1,5 @@
 # Projet 1 page 25
-# Version 4.0.2
+# Version 4.1
 # Version en cours de documentation
 
 import time
@@ -33,64 +33,28 @@ def verif(request):
         time.sleep(1)
         exit()
 
-#exercice 1 
-def decimale_binaire(n): # envoyé grace à requestType(), renvoie la fonction de demande de calcul pour la base 2
-    request = input("donnez un chiffre en base 10 \n >>>")
-    verif(request)
-    if (request.isdigit()):
-        n = int(request)
-        if n == 0 or n == 1: # valeurs par defaut
-            print(basics_colors.OK, n, " vaut ", n," en toutes les bases ", basics_colors.RESET)
-        if n < 0: # erreur
-            args = 2
-            error_message(args)
-        req_binary(n)
-    else: # erreur
-        args = 4
-        error_message(args)
-
-def req_binary(n): # envoyé par requestType(), prend en fonction le nombre n demande, renvoie la fonction calculatoire du calcul binaire
-    vInit = n
-    binary_list = []
-    while n != 0:
-        varList = n % 2
-        binary_list.insert(0, varList)
-        n = n // 2
-
-    if n == 0:
-        resList = ' ,'.join(map(str,binary_list))
-        resListTotal = ''.join(map(str,binary_list)) 
-        print(basics_colors.OK, vInit, " en base 10 équivaut à ", resList, " ( ", resListTotal, " ) en base 2", basics_colors.RESET)
-        time.sleep(1.5)
-        requestType()
-    #end decimale_binaire
-
-# exercice 2
-def decimale_hexadecimale(n): # envoyé grace à requestType() ou req_binary(), renvoie la fonction de demande de calcul pour la base 16
-    n = 0
+def binaire_hexa(n, exo): # envoyé grace à requestType()
     request = input("donnez un chiffre en base 10 \n >>>")
     verif(request)
     if ( request.isdigit()):
         n = int(request)
-
         if n == 0 or n == 1: # valeurs par défaut
             print(basics_colors.OK, n, " vaut ", n," en toutes les bases ", basics_colors.RESET)
             time.sleep(1)
             requestType()
-
         if n < 0: # erreur
             args = 2
             error_message(args)
-        reqBase = 16
-        req_hexa(n, reqBase) # renvoie à la partie calculatoire vers la base 16 avec n et la base demandée(obligatoirement 16)
-
-    else: # erreur
+        if exo == 1:
+            reqBase = 2
+        if exo == 2:
+            reqBase = 16
+        req(n, reqBase)
+    else:
         args = 4
         error_message(args)
     
-def req_hexa(n, reqBase): # envoyé par decimale_hexadecimal(), prend en compte n et la base 16, calcule le résultat
-    
-    varListStr = 0
+def req(n, reqBase): # envoyé par decimale_hexadecimal(), prend en compte n et la base 16, calcule le résultat    
     vInit = n
     binary_list = []
     while n != 0:
@@ -105,8 +69,7 @@ def req_hexa(n, reqBase): # envoyé par decimale_hexadecimal(), prend en compte 
             print(basics_colors.OK, vInit, " en base 10 équivaut à ", resList, " ( ", resListTotal, " ) en base ", reqBase, basics_colors.RESET)
             time.sleep(3)
             requestType()
-    # end decimale_hexadecimale
-    
+    # end decimale_hexadecimale   
 # exercice 3
 def base_request(n):
     n = 0
@@ -128,21 +91,14 @@ def base_request(n):
         verif(request)
         if ( request.isdigit()):
             reqBase = int(request)
-
             if reqBase <= 1: # erreur
                 args = 3
                 error_message(args)
-            
             if reqBase > 62:
                 args = 5
                 error_message(args)
             binary_list = []
-            if reqBase == 2: #renvoie vers l'exercice de base 2
-                req_binary(n)
-                requestType()
-            else:
-                req_hexa(n, reqBase) #renvoie vers l'exercice de base 16
-                requestType()
+            req(n, reqBase) #renvoie vers l'exercice de base 16
 
         else:
             args = 4
@@ -164,12 +120,15 @@ def requestType():
             args = 1
             error_message(args)
         if n == 1: 
-            decimale_binaire(n) # -> Exercice 1 -> partie du calcul
+            exo = 1
+            binaire_hexa(n, exo)
             return()
         if n == 2:
-            decimale_hexadecimale(n) # -> Exercice 2 -> partie du calcul
+            exo = 2
+            binaire_hexa(n, exo)
             return()
         if n == 3:
+            reqBase = 0
             base_request(n) # -> Exercice 3 -> partie de demande puis de calcul
             return()
     else:
