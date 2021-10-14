@@ -99,7 +99,6 @@ def base_request(n):
                 error_message(args)
             binary_list = []
             req(n, reqBase) #renvoie vers l'exercice de base 16
-
         else:
             args = 4
             error_message(args)
