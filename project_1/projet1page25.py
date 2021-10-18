@@ -33,7 +33,7 @@ def verif(request):
         time.sleep(1)
         exit()
 
-def binaire_hexa(n, exo): # envoyé grace à requestType()
+def binaire_hexa(n, reqBase): # envoyé grace à requestType()
     request = input("donnez un chiffre en base 10 \n >>>")
     verif(request)
     if ( request.isdigit()):
@@ -45,10 +45,6 @@ def binaire_hexa(n, exo): # envoyé grace à requestType()
         if n < 0: # erreur
             args = 2
             error_message(args)
-        if exo == 1:
-            reqBase = 2
-        if exo == 2:
-            reqBase = 16
         req(n, reqBase)
     else:
         args = 4
@@ -99,6 +95,7 @@ def base_request(n):
                 error_message(args)
             binary_list = []
             req(n, reqBase) #renvoie vers l'exercice de base 16
+
         else:
             args = 4
             error_message(args)
@@ -119,12 +116,12 @@ def requestType():
             args = 1
             error_message(args)
         if n == 1: 
-            exo = 1
-            binaire_hexa(n, exo)
+            reqBase = 2
+            binaire_hexa(n, reqBase)
             return()
         if n == 2:
-            exo = 2
-            binaire_hexa(n, exo)
+            reqBase = 16
+            binaire_hexa(n, reqBase)
             return()
         if n == 3:
             reqBase = 0
