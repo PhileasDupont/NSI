@@ -10,7 +10,7 @@ Ce programme Python consiste à effectuer la conversion d'un nombre en base déc
 
  - Afin de choisir l'exercice demandé, il suffit d'écrire lorsque demandé: 1; 2 ou 3; selon l'exercice voulu.
  - Sachez qu'un nombre décimal, ou négatif ainsi qu'une base décimale, négtive, nulle ou égale à 1, ne peut être accépté et renverra un message d'erreur. 
- - Les unités sont notées ainsi: 
+ Les unités sont notées ainsi: 
  
     -> 0 à 9 == chiffres de 0 à 9
    
