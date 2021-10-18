@@ -1,6 +1,7 @@
 /// HELP ///
 
 Ce programme Python consiste à effectuer la conversion d'un nombre en base décimamle vers:
+
 1 ) une base binaire
 2 ) une base hexadécimale
 3 ) une base demandée ( entre 1 et 62 )  
