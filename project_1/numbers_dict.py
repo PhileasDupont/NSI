@@ -1,5 +1,5 @@
 # dictionnaire ( nombres -> Lettres +  erreurs ) 
-# v 3.1
+# v 3.1 
 
 import string
 alpha = string.digits + string.ascii_uppercase + string.ascii_lowercase
