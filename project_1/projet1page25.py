@@ -1,16 +1,11 @@
+import time
 # Projet 1 page 25
-Version = 'V4.2.1'
+Version = 'V4.2.2'
 # Version en cours de documentation
 
 import time
-from numbers_dict import *
+from annexes import *
 import webbrowser
-
-#classe des couleurs
-class color:
-    OK = '\033[92m' #VERT -> réponse 
-    FAIL = '\033[91m' #ROUGE -> code d'erreur
-    RESET = '\033[0m' #GRIS -> remet les couleurs à 0
 
 def error_message(args): # envoyé avec args, envoie un message d'erreur
     print(color.FAIL, errors_dict[args] ,color.RESET)
@@ -25,13 +20,13 @@ def verif(request):
     if request == 'help' or request == 'h':
         print(color.OK,"redirection sur le GitHub ...", color.RESET)
         webbrowser.open('https://github.com/PhileasDupont/NSI/blob/main/project_1/')
+        print(color.OK, Version, color.RESET)
         time.sleep(2)
         requestType()
     if request == 'q' or request == 'quit':
         print(color.FAIL, "Merci d'avoir participé !", color.RESET)
         print(color.OK, "Created by ©PhileasDupont", color.RESET)
         print(color.OK, Version, color.RESET)
-
         time.sleep(1)
         exit()
 
@@ -65,7 +60,7 @@ def req(n, reqBase): # envoyé par decimale_hexadecimal(), prend en compte n et 
             resList = ' ,'.join(map(str,binary_list)) # faire une liste visible
             resListTotal = ''.join(map(str,binary_list)) # faire une liste visible
             print(color.OK, vInit, " en base 10 équivaut à ", resList, " ( ", resListTotal, " ) en base ", reqBase, color.RESET)
-            time.sleep(3)
+            time.sleep(1)
             requestType()
     # end decimale_hexadecimale   
 # exercice 3
@@ -74,7 +69,6 @@ def base_request(n):
     request = input("donnez un chiffre en base 10 \n >>> ")
     verif(request)
     if ( request.isdigit()):
-        vInit = int(request)
         n = int(request)
 
         if n < 0: # erreur
@@ -107,9 +101,9 @@ def base_request(n):
 
 # demande ce que l'user veut faire 
 def requestType():
-    print(color.OK, "debut du programme ...", color.RESET)
+    init()
     print(color.OK, Version, color.RESET)
-    time.sleep(1)
+    time.sleep(0.5)
     print("que voulez vous faire ? \n '1' -> conersion décimale vers binaire \n '2' -> conversion décimale vers hexadécimale \n '3' -> conversion décimale vers base demandée \n A n'importe quel moment tapez", color.FAIL, ' r ', color.RESET, "pour", color.FAIL, " RECOMMENCER ", color.RESET, ", tapez", color.FAIL, " h ", color.RESET, "pour être", color.FAIL, " redirigé vers la page d'aide ", color.RESET, "ou tapez", color.FAIL, " q ", color.RESET, "pour", color.FAIL, " QUITTER", color.RESET)
     request = input(">>>")
     verif(request)
@@ -127,7 +121,6 @@ def requestType():
             binaire_hexa(n, reqBase)
             return()
         if n == 3:
-            reqBase = 0
             base_request(n) # -> Exercice 3 -> partie de demande puis de calcul
             return()
     else:
