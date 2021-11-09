@@ -18,6 +18,8 @@ errors_dict[1] = 'ERROR_TYPE_1: Invalid Request'
 errors_dict[2] = 'ERROR_TYPE_2: Invalid Number Request (Negative Number)'
 errors_dict[3] = "ERROR_TYPE_3: Invalid Base Request (Negative, Null, or '1' Base)"
 errors_dict[4] = "ERROR_TYPE_4: Invalid Request (Not a Number, Negative or Decimal)"
+errors_dict[3] = "ERROR_TYPE_3=5: Invalid Base Request (The maximum available base is 62)"
+
 
 def init():
     sys.stdout.write('\r chargement ... |')
