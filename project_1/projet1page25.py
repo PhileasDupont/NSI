@@ -1,7 +1,6 @@
 import time
 # Projet 1 page 25
 Version = 'V4.2.2'
-# Version en cours de documentation
 
 import time
 from annexes import *
@@ -12,7 +11,7 @@ def error_message(args): # envoyé avec args, envoie un message d'erreur
     time.sleep(1)
     requestType()
 
-def verif(request):
+def verif(request): # vérifie si l'utilisateur a besoin d'aide
     if request == 'r' or request == 'restart':
         print(color.OK, ' retour au début ...', color.RESET)
         time.sleep(0.5)
@@ -81,7 +80,7 @@ def base_request(n):
 
         request = input("donnez la base en laquelle vous voulez convertir  \n >>>")
         verif(request)
-        if ( request.isdigit()):
+        if ( request.isdigit()): # erreurs
             reqBase = int(request)
             if reqBase <= 1: # erreur
                 args = 3
@@ -123,7 +122,7 @@ def requestType():
         if n == 3:
             base_request(n) # -> Exercice 3 -> partie de demande puis de calcul
             return()
-    else:
+    else: # erreurs
         args = 4
         error_message(args)
 
