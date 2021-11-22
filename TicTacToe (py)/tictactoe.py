@@ -34,6 +34,15 @@ def check(c, line0, line1, line2,player, mode):
         time.sleep(1)
         exit()
 
+def checkNull(line0, line1, line2):
+    if not(' ' in line1 or ' ' in line2 or ' ' in line0): 
+        time.sleep(1)
+        print(color.OK, ' LE JEU EST TERMINE !!')
+        print(color.OK, 'Il y a eu un ',color.FAIL, 'MATCH NUL', color.OK,' !!', color.RESET)
+        print(color.FAIL, 'RETOUR AU DEBUT DU JEU \r \r \r', color.RESET)
+        time.sleep(2)
+        chooseType()
+
 def checkWinNormal(line0, line1, line2, player):
     if (line0[0] == line1[0] == line2[0] == ('X' or 'O')) or (line0[0] == line0[1] == line0[2] == ('X' or 'O')) or (line1[0] == line1[1] == line1[2] == ('X' or 'O')) or (line0[2] == line1[2] == line2[2] == ('X' or 'O')) or (line2[0] == line2[1] == line2[2] == ('X' or 'O')) or (line0[1] == line1[1] == line2[1] == ('X' or 'O')):
         time.sleep(1)
@@ -50,6 +59,8 @@ def checkWinDiagonal(line0, line1, line2, player):
         print(color.OK, ' LE JEU EST TERMINE !!')
         print(color.OK, 'ce sont les ', color.FAIL,playerdict[player], color.OK, ' qui ont gagné !!')
         chooseType()
+    checkNull(line0, line1, line2)
+
 
 def IAplay(line0, line1, line2, mode, hasPlayed):
     if hasPlayed == False:
