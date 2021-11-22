@@ -2,7 +2,7 @@ import time
 import random
 from annexes import *
 
-Version = 1.0
+Version = 2.0
 
 class color:
     OK = '\033[92m'  # VERT -> réponse
@@ -255,6 +255,7 @@ def beginIA(line0, line1, line2, mode):
     xplay(line0, line1, line2, mode)
 
 def chooseType():
+    print(Version)
     init()
     line0 = [' ', ' ', ' ']
     line1 = [' ', ' ', ' ']
