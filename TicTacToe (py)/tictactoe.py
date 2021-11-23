@@ -2,7 +2,7 @@ import time
 import random
 from annexes import *
 
-Version = 2.0
+Version = 2.2
 
 class color:
     OK = '\033[92m'  # VERT -> réponse
@@ -34,7 +34,7 @@ def check(c, line0, line1, line2,player, mode):
         time.sleep(1)
         exit()
 
-def checkNull(line0, line1, line2):
+def checkNull(line0, line1, line2, coup):
     if not(' ' in line1 or ' ' in line2 or ' ' in line0): 
         time.sleep(1)
         print(color.OK, ' LE JEU EST TERMINE !!')
@@ -43,26 +43,29 @@ def checkNull(line0, line1, line2):
         time.sleep(2)
         chooseType()
 
-def checkWinNormal(line0, line1, line2, player):
+def checkWinNormal(line0, line1, line2, player, coup):
     if (line0[0] == line1[0] == line2[0] == ('X' or 'O')) or (line0[0] == line0[1] == line0[2] == ('X' or 'O')) or (line1[0] == line1[1] == line1[2] == ('X' or 'O')) or (line0[2] == line1[2] == line2[2] == ('X' or 'O')) or (line2[0] == line2[1] == line2[2] == ('X' or 'O')) or (line0[1] == line1[1] == line2[1] == ('X' or 'O')):
         time.sleep(1)
         print(color.OK, ' LE JEU EST TERMINE !!')
         print(color.OK, 'ce sont les ', color.FAIL,playerdict[player], color.OK, ' qui ont gagné !!', color.RESET)
+        print(color.OK, 'en ', color.FAIL,coup, color.OK, ' coups', color.RESET)
+
         print(color.FAIL, 'RETOUR AU DEBUT DU JEU \r \r \r')
         time.sleep(2)
         chooseType()
-    checkWinDiagonal(line0, line1, line2, player)
+    checkWinDiagonal(line0, line1, line2, player, coup)
 
-def checkWinDiagonal(line0, line1, line2, player):
+def checkWinDiagonal(line0, line1, line2, player, coup):
     if (line0[0] == line1[1] == line2[2] == ('X' or 'O')) or (line0[2] == line1[1] == line2[0] == ('X' or 'O')):
         time.sleep(1)
         print(color.OK, ' LE JEU EST TERMINE !!')
         print(color.OK, 'ce sont les ', color.FAIL,playerdict[player], color.OK, ' qui ont gagné !!')
+        print(color.OK, 'en ', color.FAIL,coup, color.OK, ' coups', color.RESET)
         chooseType()
-    checkNull(line0, line1, line2)
+    checkNull(line0, line1, line2, coup)
 
 
-def IAplay(line0, line1, line2, mode, hasPlayed):
+def IAplay(line0, line1, line2, mode, hasPlayed, coup):
     if hasPlayed == False:
         print(color.OK, "c'est à l'ordinateur (", color.FAIL, ' O ',color.OK,") de jouer !", color.RESET)
     l = random.randint(1,3)
@@ -72,37 +75,37 @@ def IAplay(line0, line1, line2, mode, hasPlayed):
     if l == 1:
         selectColumn = c-1 
         if line0[selectColumn] != ' ':
-            IAplay(line0, line1, line2, mode, True)
+            IAplay(line0, line1, line2, mode, True, coup)
         line0[selectColumn] = 'O'
         print('\n', line0, '\n', line1, '\n', line2)
-        checkWinNormal(line0, line1, line2, player)
+        checkWinNormal(line0, line1, line2, player, coup)
         mode = 1
         hasPlayed = False
-        xplay(line0, line1, line2, mode)
+        xplay(line0, line1, line2, mode, coup)
     if l == 2:
         selectColumn = c-1 
         if line1[selectColumn] != ' ':
-            IAplay(line0, line1, line2, mode, True)
+            IAplay(line0, line1, line2, mode, True, coup)
         line1[selectColumn] = 'O'
         print('\n', line0, '\n', line1, '\n', line2)
-        checkWinNormal(line0, line1, line2, player)
+        checkWinNormal(line0, line1, line2, player, coup)
         mode = 1
         hasPlayed = False
-        xplay(line0, line1, line2, mode)
+        xplay(line0, line1, line2, mode, coup)
     if l == 3:
         selectColumn = c-1 
         if line2[selectColumn] != ' ':
             IAplay(line0, line1, line2, mode, True)
         line2[selectColumn] = 'O'
         print('\n', line0, '\n', line1, '\n', line2)
-        checkWinNormal(line0, line1, line2, player)
+        checkWinNormal(line0, line1, line2, player, coup)
         mode = 1
         hasPlayed = False
-        xplay(line0, line1, line2, mode)
+        xplay(line0, line1, line2, mode, coup)
     else: 
         error_message(1000, l,'c', line0, line1, line2,player, mode)
 
-def increment(l, line0, line1, line2, player, mode):
+def increment(l, line0, line1, line2, player, mode, coup):
     if l == 1:
         print(color.OK, "vous avez choisi la", color.FAIL,
               'première', color.OK, "ligne ", color.RESET)
@@ -122,13 +125,13 @@ def increment(l, line0, line1, line2, player, mode):
                     oplay(line0, line1, line2, mode)
             line0[selectColumn] = playerdict[player]
             print('\n', line0, '\n', line1, '\n', line2)
-            checkWinNormal(line0, line1, line2, player)
+            checkWinNormal(line0, line1, line2, player, coup)
             if mode == 1:
-                IAplay(line0, line1, line2, mode, False)
+                IAplay(line0, line1, line2, mode, False, coup)
             if player == 1:
-                oplay(line0, line1, line2, mode)
+                oplay(line0, line1, line2, mode, coup)
             if player == 2:
-                xplay(line0, line1, line2, mode)
+                xplay(line0, line1, line2, mode, coup)
         else:
             error_message(4, l,'c', line0, line1, line2,player, mode)
 
@@ -151,13 +154,13 @@ def increment(l, line0, line1, line2, player, mode):
                     oplay(line0, line1, line2, mode)
             line1[c] = playerdict[player]
             print('\n', line0, '\n', line1, '\n', line2)
-            checkWinNormal(line0, line1, line2, player)
+            checkWinNormal(line0, line1, line2, player, coup)
             if mode == 1:
-                IAplay(line0, line1, line2, mode, False)
+                IAplay(line0, line1, line2, mode, False, coup)
             if player == 1:
-                oplay(line0, line1, line2, mode)
+                oplay(line0, line1, line2, mode, coup)
             if player == 2:
-                xplay(line0, line1, line2, mode)
+                xplay(line0, line1, line2, mode, coup)
         else:
             error_message(4, l,'c', line0, line1, line2,player, mode)    
 
@@ -181,17 +184,17 @@ def increment(l, line0, line1, line2, player, mode):
                     oplay(line0, line1, line2, mode)
             line2[c] = playerdict[player]
             print('\n', line0, '\n', line1, '\n', line2)
-            checkWinNormal(line0, line1, line2, player)
+            checkWinNormal(line0, line1, line2, player, coup)
             if mode == 1:
-                IAplay(line0, line1, line2, mode, False)
+                IAplay(line0, line1, line2, mode, False, coup)
             if player == 1:
-                oplay(line0, line1, line2, mode)
+                oplay(line0, line1, line2, mode, coup)
             if player == 2:
-                xplay(line0, line1, line2, mode)
+                xplay(line0, line1, line2, mode, coup)
         else:
             error_message(4, l,'c', line0, line1, line2,player, mode)
 
-def xplay(line0, line1, line2, mode):
+def xplay(line0, line1, line2, mode, coup):
     print(color.OK, "c'est aux ", color.FAIL, " X ", color.OK, " de jouer ! ")
     player = 1
     time.sleep(1)
@@ -204,14 +207,15 @@ def xplay(line0, line1, line2, mode):
         time.sleep(1)
         exit()
     if (l.isdigit()):
+        coup = coup + 1
         l = int(l)
         if l > 3 or l < 1 or l == '':
             error_message(3, l,'x', line0, line1, line2,player, mode)
-        increment(l, line0, line1, line2, player, mode)
+        increment(l, line0, line1, line2, player, mode, coup)
     else:
         error_message(2, l, 'x', line0, line1, line2,player, mode)
 
-def oplay(line0, line1, line2, mode):
+def oplay(line0, line1, line2, mode, coup):
     time.sleep(2)
     print(color.OK, "c'est aux ", color.FAIL, " O ", color.OK, " de jouer ! ")
     player = 2
@@ -229,7 +233,7 @@ def oplay(line0, line1, line2, mode):
         l = int(l)
         if l > 3 or l < 1 or l == '':
             error_message(3, l,'o', line0, line1, line2,player, mode)
-        increment(l, line0, line1, line2, player, mode)
+        increment(l, line0, line1, line2, player, mode, coup)
     else:
         error_message(2, l,'o', line0, line1, line2,player, mode)
 
@@ -244,7 +248,8 @@ def beginVS(line0, line1, line2, player, mode):
     print('\n', line0, '\n', line1, '\n', line2)
     time.sleep(1)
     mode = 2
-    xplay(line0, line1, line2, mode)
+    coup = 0
+    xplay(line0, line1, line2, mode, coup)
     
 def beginIA(line0, line1, line2, mode):
     time.sleep(1)
