@@ -22,7 +22,7 @@ This game is the exact Tic Tac Toe, so winning by 3 in a column, 3 in a line, or
 ![image](https://user-images.githubusercontent.com/81762192/143005413-faa5fc71-f041-440c-80a2-ac0fd72079c9.png)
 
 
-**Changelog**:
+***Changelog*** :
 
 v 1.1 -> Game initialized
 v 1.2 -> Errors implemented
