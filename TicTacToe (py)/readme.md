@@ -28,10 +28,12 @@ This game is the exact Tic Tac Toe, so winning by 3 in a column, 3 in a line, or
 - v 1.2 -> Errors implemented;
 - v 1.3 -> Null added;
 
+
 - v 2.0 -> IA created;
 - v 2.1 -> Bugs correction;
 - v 2.2 -> Errors for IA;
 - v 2.3 -> Colors added;
+
 
 - v 3.0 -> Redirection;
 - v 3.1 -> Check for retry;
